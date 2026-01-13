@@ -1,0 +1,234 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Wireless Bluetooth Headphones",
+      "category": "Electronics",
+      "unitPrice": 79.99,
+      "cogs": 35.5
+    },
+    {
+      "id": 2,
+      "title": "Organic Cotton T-Shirt",
+      "category": "Clothing",
+      "unitPrice": 24.99,
+      "cogs": 8.75
+    },
+    {
+      "id": 3,
+      "title": "Stainless Steel Water Bottle",
+      "category": "Home & Kitchen",
+      "unitPrice": 19.99,
+      "cogs": 7.2
+    },
+    {
+      "id": 4,
+      "title": "LED Desk Lamp",
+      "category": "Electronics",
+      "unitPrice": 34.99,
+      "cogs": 15.8
+    },
+    {
+      "id": 5,
+      "title": "Yoga Mat Premium",
+      "category": "Sports",
+      "unitPrice": 29.99,
+      "cogs": 12.4
+    },
+    {
+      "id": 6,
+      "title": "Coffee Maker Deluxe",
+      "category": "Home & Kitchen",
+      "unitPrice": 89.99,
+      "cogs": 42.3
+    },
+    {
+      "id": 7,
+      "title": "Running Shoes Pro",
+      "category": "Sports",
+      "unitPrice": 119.99,
+      "cogs": 58.2
+    },
+    {
+      "id": 8,
+      "title": "Laptop Stand Aluminum",
+      "category": "Electronics",
+      "unitPrice": 44.99,
+      "cogs": 18.9
+    }
+  ],
+  "orders": [
+    {
+      "orderNo": "ORD-001",
+      "lineItems": [
+        {
+          "productId": 1,
+          "quantity": 2
+        },
+        {
+          "productId": 3,
+          "quantity": 1
+        }
+      ],
+      "discounts": 10,
+      "taxes": 15.2,
+      "shipping": 5
+    },
+    {
+      "orderNo": "ORD-002",
+      "lineItems": [
+        {
+          "productId": 2,
+          "quantity": 3
+        },
+        {
+          "productId": 5,
+          "quantity": 1
+        }
+      ],
+      "discounts": 5,
+      "taxes": 9.85,
+      "shipping": 7.5
+    },
+    {
+      "orderNo": "ORD-003",
+      "lineItems": [
+        {
+          "productId": 4,
+          "quantity": 1
+        },
+        {
+          "productId": 8,
+          "quantity": 2
+        }
+      ],
+      "discounts": 0,
+      "taxes": 12.48,
+      "shipping": 8
+    },
+    {
+      "orderNo": "ORD-004",
+      "lineItems": [
+        {
+          "productId": 6,
+          "quantity": 1
+        },
+        {
+          "productId": 7,
+          "quantity": 1
+        }
+      ],
+      "discounts": 20,
+      "taxes": 21,
+      "shipping": 0
+    },
+    {
+      "orderNo": "ORD-005",
+      "lineItems": [
+        {
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "productId": 2,
+          "quantity": 2
+        },
+        {
+          "productId": 3,
+          "quantity": 1
+        }
+      ],
+      "discounts": 8.5,
+      "taxes": 13.45,
+      "shipping": 6
+    },
+    {
+      "orderNo": "ORD-006",
+      "lineItems": [
+        {
+          "productId": 5,
+          "quantity": 2
+        },
+        {
+          "productId": 6,
+          "quantity": 1
+        }
+      ],
+      "discounts": 12,
+      "taxes": 14.99,
+      "shipping": 5.5
+    },
+    {
+      "orderNo": "ORD-007",
+      "lineItems": [
+        {
+          "productId": 7,
+          "quantity": 1
+        },
+        {
+          "productId": 8,
+          "quantity": 1
+        }
+      ],
+      "discounts": 15,
+      "taxes": 16.5,
+      "shipping": 0
+    },
+    {
+      "orderNo": "ORD-008",
+      "lineItems": [
+        {
+          "productId": 3,
+          "quantity": 3
+        },
+        {
+          "productId": 4,
+          "quantity": 2
+        }
+      ],
+      "discounts": 5.5,
+      "taxes": 12.95,
+      "shipping": 9
+    },
+    {
+      "orderNo": "ORD-009",
+      "lineItems": [
+        {
+          "productId": 1,
+          "quantity": 1
+        },
+        {
+          "productId": 4,
+          "quantity": 1
+        },
+        {
+          "productId": 7,
+          "quantity": 1
+        }
+      ],
+      "discounts": 18,
+      "taxes": 23.49,
+      "shipping": 0
+    },
+    {
+      "orderNo": "ORD-010",
+      "lineItems": [
+        {
+          "productId": 2,
+          "quantity": 4
+        },
+        {
+          "productId": 5,
+          "quantity": 2
+        },
+        {
+          "productId": 8,
+          "quantity": 1
+        }
+      ],
+      "discounts": 10,
+      "taxes": 18.95,
+      "shipping": 7
+    }
+  ]
+}
