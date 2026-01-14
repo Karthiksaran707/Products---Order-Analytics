@@ -5,7 +5,7 @@
       "title": "Wireless Bluetooth Headphones",
       "category": "Electronics",
       "unitPrice": 79.99,
-      "cogs": 35.5
+      "cogs": 30
     },
     {
       "id": 2,
@@ -55,6 +55,27 @@
       "category": "Electronics",
       "unitPrice": 44.99,
       "cogs": 18.9
+    },
+    {
+      "id": 9,
+      "title": "Mobile",
+      "category": "Electronics",
+      "unitPrice": 20.99,
+      "cogs": 5.9
+    },
+    {
+      "id": 10,
+      "title": "SSD",
+      "category": "Electronics",
+      "unitPrice": 20.99,
+      "cogs": 5.9
+    },
+    {
+      "id": 11,
+      "title": "Pendrive",
+      "category": "Electronics",
+      "unitPrice": 5.99,
+      "cogs": 1.9
     }
   ],
   "orders": [

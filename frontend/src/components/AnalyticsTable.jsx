@@ -1,20 +1,28 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { calculateOrderAnalytics } from '../utils/calculations';
 
 const AnalyticsTable = ({ orders, products }) => {
     const [analytics, setAnalytics] = useState([]);
+    const [lastUpdated, setLastUpdated] = useState(null);
+    const [isRecalculating, setIsRecalculating] = useState(false);
 
-    const recalculate = () => {
+    // Use useCallback to memoize the recalculate function
+    const recalculate = useCallback(() => {
+        setIsRecalculating(true);
         const calculatedAnalytics = orders.map(order =>
             calculateOrderAnalytics(order, products)
         );
         setAnalytics(calculatedAnalytics);
-    };
+        setLastUpdated(new Date());
 
-    // Initial calculation on mount and when data changes
+        // Brief loading state for visual feedback
+        setTimeout(() => setIsRecalculating(false), 200);
+    }, [orders, products]);
+
+    // Automatic recalculation when data changes
     useEffect(() => {
         recalculate();
-    }, [orders, products]);
+    }, [recalculate]);
 
     const formatCurrency = (value) => {
         return `$${value.toFixed(1)}`;
@@ -42,16 +50,36 @@ const AnalyticsTable = ({ orders, products }) => {
                 <div className="flex justify-between items-center">
                     <div>
                         <h2 className="text-xl font-bold text-gray-800">Order Analytics</h2>
-                        <p className="text-sm text-gray-600 mt-1">
-                            Real-time calculations based on current product pricing
-                        </p>
+                        <div className="flex items-center gap-3 mt-1">
+                            <p className="text-sm text-gray-600">
+                                Real-time calculations based on current product pricing
+                            </p>
+                            {lastUpdated && (
+                                <div className="flex items-center gap-1.5 text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full">
+                                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                    </svg>
+                                    <span>Auto-updated {lastUpdated.toLocaleTimeString()}</span>
+                                </div>
+                            )}
+                            {isRecalculating && (
+                                <div className="flex items-center gap-1.5 text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
+                                    <svg className="animate-spin w-3 h-3" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    <span>Recalculating...</span>
+                                </div>
+                            )}
+                        </div>
                     </div>
                     <button
                         onClick={recalculate}
                         className="btn btn-primary"
+                        disabled={isRecalculating}
                     >
                         <span className="flex items-center gap-2">
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className={`w-5 h-5 ${isRecalculating ? 'animate-spin' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                             </svg>
                             Recalculate

@@ -22,7 +22,7 @@ function App() {
     try {
       setLoading(true);
       setError(null);
-      const response = await axios.get(`${API_BASE_URL}/data`);
+      const response = await axios.get(`${API_BASE_URL}/data`); //
       setProducts(response.data.products);
       setOrders(response.data.orders);
     } catch (err) {

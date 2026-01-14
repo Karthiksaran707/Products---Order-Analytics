@@ -20,11 +20,23 @@ export const roundToOneDecimal = (value) => {
  * @returns {number} Gross sales amount
  */
 export const calculateGrossSales = (lineItems, products) => {
-    const total = lineItems.reduce((sum, item) => {
+    let total = 0;
+    let missingProducts = [];
+
+    lineItems.forEach(item => {
         const product = products.find(p => p.id === item.productId);
-        if (!product) return sum;
-        return sum + (product.unitPrice * item.quantity);
-    }, 0);
+        if (!product) {
+            missingProducts.push(item.productId);
+            console.warn(`Product ID ${item.productId} not found in products list`);
+        } else {
+            total += (product.unitPrice * item.quantity);
+        }
+    });
+
+    if (missingProducts.length > 0) {
+        console.warn(`Missing products in calculation: ${missingProducts.join(', ')}`);
+    }
+
     return roundToOneDecimal(total);
 };
 
@@ -36,11 +48,23 @@ export const calculateGrossSales = (lineItems, products) => {
  * @returns {number} Total COGS amount
  */
 export const calculateTotalCOGS = (lineItems, products) => {
-    const total = lineItems.reduce((sum, item) => {
+    let total = 0;
+    let missingProducts = [];
+
+    lineItems.forEach(item => {
         const product = products.find(p => p.id === item.productId);
-        if (!product) return sum;
-        return sum + (product.cogs * item.quantity);
-    }, 0);
+        if (!product) {
+            missingProducts.push(item.productId);
+            console.warn(`Product ID ${item.productId} not found for COGS calculation`);
+        } else {
+            total += (product.cogs * item.quantity);
+        }
+    });
+
+    if (missingProducts.length > 0) {
+        console.warn(`Missing products in COGS calculation: ${missingProducts.join(', ')}`);
+    }
+
     return roundToOneDecimal(total);
 };
 

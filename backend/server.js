@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express');  //
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
@@ -69,7 +69,7 @@ app.put('/api/products/:id', (req, res) => {
       return res.status(404).json({ error: 'Product not found' });
     }
 
-    // Update product
+    // Update product old data
     data.products[productIndex] = {
       ...data.products[productIndex],
       title,
@@ -140,8 +140,4 @@ app.post('/api/products', (req, res) => {
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
-  console.log(`API endpoints:`);
-  console.log(`  GET  http://localhost:${PORT}/api/data`);
-  console.log(`  PUT  http://localhost:${PORT}/api/products/:id`);
-  console.log(`  POST http://localhost:${PORT}/api/products`);
 });
